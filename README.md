@@ -40,7 +40,8 @@ Whether you want to build it on a breadboard or order custom PCBs and 3D-print t
   Introduction of the 2D Room Visualizer GUI to visually map LED strips and address ranges, alongside background service / system-tray support.
 * **v1.1 — Wireless & Smart Home Ecosystem**
   Addition of wireless Wi-Fi streaming mode and Home Assistant integration so external smart lights can sync with the setup.
-
+* **v1.2 — Standalone Firmware & Third-Party Ecosystem Support**
+  Alternative firmware option and plugin support to use the OSCAP-Box as a standalone, 4-channel ARGB controller directly compatible with third-party software such as **SignalRGB** (via USB Serial plugin and/or WLED/DDP network discovery).
 ## License
 
 OSCAP is dual-licensed depending on the type of files:
