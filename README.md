@@ -1,35 +1,45 @@
-# OSCAP
-OSCAP: Open-Source Customizable Ambilight Project
+# OSCAP: Open-Source Customizable Ambilight Project
+
+I had an addressable RGB strip lying around in my room and wanted to sync it to my PC as an ambient backlight. Unfortunately, most off-the-shelf Ambilight kits are either overpriced or rely on an HDMI passthrough box. In almost all cases, those boxes are capped at **HDMI 2.0 (18 Gbit/s)**—which means sacrificing image quality, refresh rate, or HDR on a modern monitor. My own **2K HDR 165Hz** setup requires roughly **20 Gbit/s** of throughput (and 4K high-refresh monitors demand even more), so an HDMI bottleneck simply wasn't an option.
+
+That's why I started **OSCAP**: a modular, zero-bottleneck Ambilight system designed to work with almost any PC setup.
+
+### How It Works
+The concept is straightforward: instead of intercepting a video cable, a lightweight PC application reads the screen edges directly from GPU memory, processes and averages the colors, and streams the data to a microcontroller—either **wired via USB** or **wirelessly over Wi-Fi**. Down the road, I also plan to integrate **Home Assistant** so other smart lights in the room can join the sync.
+
+### The OSCAP-Box (Hardware Highlights)
+* **Flexible Power Input:** Equipped with two different barrel jack sizes alongside a screw terminal input, supporting anything from **5V up to 24V** without forcing you to cut up your power supply cables.
+* **Multi Microcontroller Support** The system uses [platformIO](https://platformio.org/) so that it can run on almost any microcontroller. 
+* **High Power Handling:** Rated for up to **10A total**—giving you up to **240W of LED power at 24V** (plenty for full-room or large-screen setups).
+* **4 Independent Outputs:** Features **4 controllable data buses**, allowing you to easily split and manage multiple LED strips across your desk or room.
+
+### 100% Open-Source & DIY Friendly
+OSCAP is built for makers, gamers, and tinkerers. Everything you need to build, modify, or expand your own unit will be made publicly available in this repository:
+* **Source Code:** The full PC capture/visualizer software and microcontroller firmware.
+* **Electronics & PCB Files:** Complete electrical schematics, Bill of Materials (BOM), and production-ready **Gerber files** so you can order the custom PCB yourself.
+* **3D Printable Enclosure:** Ready-to-print STL/3D CAD files for the OSCAP-Box housing.
+
+Whether you want to build it on a breadboard or order custom PCBs and 3D-print the case, anyone who wants to make their own OSCAP is free to do so.
+
+*(Reference: [HDMI Bandwidth Specifications](https://en.wikipedia.org/wiki/HDMI))*
 
 
-# OSCAP Roadmap & Todo List
+## Roadmap
 
-## v0.1 — Proof of Concept (Completed)
-- [x] Set up GitHub repository with dual-license (`LICENSE-SOFTWARE` + `LICENSE-HARDWARE`) and AI disclaimer[cite: 1, 4]
-- [x] Binary USB serial data protocol (`0xAA 0x55`) with support for 3 independent buses[cite: 1]
-- [x] Working end-to-end test on Raspberry Pi Pico W with Windows DXGI (`BetterCam`) and `NeoPixelBus`[cite: 1]
-
-## v0.5 — Sampling Engine & HDR Optimization
-- [ ] **Zone Mapper:** Link the left, top, right, and bottom of the screen to specific LED ranges and/or buses[cite: 1]
-- [ ] **Response Settings:** Adjustable sampling depth (`sample_depth`), smoothing speed (EMA filter), and color calculation (average vs. dominant)[cite: 1]
-- [ ] **HDR Tone Mapping:** Saturation and gamma correction for vivid colors in Windows HDR mode[cite: 1, 2]
-- [ ] **Color Orders:** Support for `RGB`, `GRB`, `RGBW`, and `RGBWW` on the PC side[cite: 1, 2]
-
-## v0.8 — Foolproof Hardware & 3D Enclosure (`/hardware`)
-- [ ] **PCB Design** The PCB should be able to handle a total of 10 Amps. And 4 Amps per bus
-- [ ] **Galvanic Isolation & Level Shifting:** Schematic based on the **TI ISO6440DWR** (4-channel digital isolator, 3.3V to 5V, up to 150 Mbps) to keep the PC 100% isolated from the LED power circuit
-- [ ] **Universal 5V–24V Pass-Through Power Supply:** Parallel input with both a **5.5×2.1mm DC barrel jack** (plug-and-play without cutting the adapter) and a 2-pin screw terminal, connected to a small internal buck converter for the isolator
-- [ ] **Hardware Protection:** Overvoltage protection (P-MOSFET), TVS diode against voltage spikes, and 3x resettable PTC polyfuses on the strip outputs[cite: 1]
-- [ ] **Enclosure:** 3D-printed housing with strain relief and 3 standard 3-pin outputs (`V+`, `Data`, `GND`)[cite: 2]
-
-## v1.0 — Plug & Play Release & 2D Room Visualizer
-- [ ] **2D Room Visualizer GUI:** Visual editor to place your screen and LED strips in your room/setup and assign address ranges[cite: 1, 2]
-- [ ] **Auto-Discovery:** Automatic USB port detection via OSCAP handshake (no more manual COM port selection needed)[cite: 1]
-- [ ] **Background Service:** System tray application with an option to start automatically with Windows[cite: 1]
-
-## v1.1 — Wireless & Smart Home Ecosystem
-- [ ] **WiFi / UDP Streaming:** Wireless control of ESP32 / Pico W controllers via a lightweight UDP protocol (e.g., DDP or WLED realtime)[cite: 1, 2]
-- [ ] **Home Assistant Integration:** Software integration to let wireless smart lamps and LED strips in the room match the screen colors
+* **v0.1 — Proof of Concept (Completed)**
+  Initial hardware setup tested with a lightweight script to capture screen colors and drive addressable LEDs via USB.
+* **v0.3 — Full Documentation & Bill of Materials**
+  Publication of the initial electrical schematics, Bill of Materials (BOM), and hardware documentation for OSCAP.
+* **v0.5 — Sampling Engine & HDR Optimization** *(Optional Alpha Release)*
+  Release of the screen-capture and color-sampling engine, including system requirement benchmarks. *(Depending on community interest, an early Alpha release may be published at this stage).*
+* **v0.6 — Linux Support**
+  Porting the capture engine to Linux (target display server architecture—X11/Wayland—to be determined).
+* **v0.8 — Foolproof Hardware & 3D Enclosure (`/hardware`)**
+  Publication of the complete custom PCB design (Gerber files) and 3D-printable enclosure models.
+* **v1.0 — Plug & Play Release & 2D Room Visualizer**
+  Introduction of the 2D Room Visualizer GUI to visually map LED strips and address ranges, alongside background service / system-tray support.
+* **v1.1 — Wireless & Smart Home Ecosystem**
+  Addition of wireless Wi-Fi streaming mode and Home Assistant integration so external smart lights can sync with the setup.
 
 ## License
 
