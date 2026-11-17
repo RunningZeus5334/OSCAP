@@ -1,0 +1,55 @@
+# --- Python (PC Applicatie & GUI) ---
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+ENV/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# --- PlatformIO & C++ (Microcontroller Firmware) ---
+.pio/
+.pioenvs/
+.piolibdeps/
+.clangd/
+.cache/
+
+# --- IDEs & Editors ---
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# --- OS Specifieke bestanden ---
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# --- 3D Modeling / CAD backups (optioneel) ---
+*.bak
+*.tmp
