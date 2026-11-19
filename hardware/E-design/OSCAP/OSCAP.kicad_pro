@@ -546,7 +546,7 @@
       "method": 0,
       "sort_order": 0
     },
-    "bom_export_filename": "${PROJECTNAME}.csv",
+    "bom_export_filename": "C:\\Users\\thoma\\Documents\\GitHub\\OSCAP\\hardware\\E-design\\BOM\\OSCAP.csv",
     "bom_fmt_presets": [],
     "bom_fmt_settings": {
       "field_delimiter": ",",
@@ -700,7 +700,7 @@
         "uuid": "9ffcd33a-b05e-48a7-a526-b32dbd8ecacc"
       }
     ],
-    "used_designators": "#FLG1-3,#PWR1-2,A1-2,C1-4,D1-5,F1-5,J1-9,P1,Q1,R1-12,SW1-4,U1-3",
+    "used_designators": "#FLG1-3,#PWR1-2,A1-2,C1-8,D1-6,F1-6,J1-9,L1,P1,Q1,R1-18,SW1-4,U1-4",
     "variants": []
   },
   "sheets": [
